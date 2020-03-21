@@ -1,3 +1,4 @@
+import { ErrorComponent } from './../shared/components/error/error.component';
 import { LoadingComponent } from './../shared/components/loading/loading.component';
 import { OweathermapService } from './oweathermap.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,6 +12,7 @@ import { PokemonComponent } from './pokemon/pokemon.component';
 @NgModule({
    declarations: [
       AppComponent,
+      ErrorComponent,
       LoadingComponent,
       ClimaComponent,
       PokemonComponent

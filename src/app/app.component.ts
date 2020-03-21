@@ -1,5 +1,5 @@
 import { Model } from './model/model';
-import { Erro } from './model/model';
+import { Error } from './model/model';
 import { OweathermapService } from './oweathermap.service';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
@@ -13,9 +13,8 @@ export class AppComponent {
   model = null;
   form: FormGroup;
   title = 'adtsyspoke';
-  pokemon: any;
-  pokemondetalhes: any;
-  erro: Erro;
+  error: Error;
+  loading = false;
   constructor(private fb: FormBuilder, private service: OweathermapService) {
     this.criarformulario();
   }
@@ -27,8 +26,9 @@ export class AppComponent {
   }
 
   pesquisar() {
-    this.erro = null;
+    this.error = null;
     this.model = null;
+    this.loading = true;
     this.service.pesquisar(this.form.controls.cidade.value)
       .subscribe(value => {
         this.model = new Model();
@@ -36,16 +36,14 @@ export class AppComponent {
           temperatura: value.main.temp,
           chovendo: value.weather[0].main === 'Rain' ? 'Sim' : 'Não'
         };
+        this.loading = false;
       },
         err => {
-          if (err.error) {
-            this.erro = err.error;
-          } else {
-            this.erro = {
-              cod: 'undefined',
-              message: 'ocorreu um erro inesperado'
-            };
-          }
+          this.error = err.error || {
+            cod: 'undefined',
+            message: 'ocorreu um erro inesperado'
+          };
+          this.loading = false;
         });
   }
 }

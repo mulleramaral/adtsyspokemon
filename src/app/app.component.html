@@ -1,14 +1,5 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="panel panel-danger margintop10" *ngIf="erro">
-        <div class="panel-heading">Atenção</div>
-        <div class="panel-body">
-          <p>Código: {{erro.cod}} - {{erro.message}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <error [model]="error"></error>
   <div class="row">
     <div class="col-md-12">
       <form [formGroup]="form">
@@ -24,5 +15,6 @@
         </div>
       </form>
     </div>
+    <loading [exibe]="loading"></loading>
     <clima [model]="model"></clima>
   </div>

@@ -51,7 +51,7 @@ export class DetalhesPokemon {
     backShinyFemale: string;
 }
 
-export class Erro {
+export class Error {
     cod: string;
     message: string;
 }
