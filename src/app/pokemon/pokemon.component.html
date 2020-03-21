@@ -1,0 +1,14 @@
+<p *ngIf="model?.pokemon"><span class="negrito">Pokemon: {{model?.pokemon?.nome}}</span></p>
+<loading [exibe]="!model?.pokemon?.detalhes"></loading>
+<div class="col-md-12" *ngIf="model?.pokemon?.detalhes">
+  <img *ngIf="model?.pokemon?.detalhes?.frontDefault" class="col-md-2" [src]="model?.pokemon?.detalhes?.frontDefault" />
+  <img *ngIf="model?.pokemon?.detalhes?.backDefault" class="col-md-2" [src]="model?.pokemon?.detalhes?.backDefault" />
+  <img *ngIf="model?.pokemon?.detalhes?.frontFemale" class="col-md-2" [src]="model?.pokemon?.detalhes?.frontFemale" />
+  <img *ngIf="model?.pokemon?.detalhes?.backFemale" class="col-md-2" [src]="model?.pokemon?.detalhes?.backFemale" />
+  <img *ngIf="model?.pokemon?.detalhes?.frontShiny" class="col-md-2" [src]="model?.pokemon?.detalhes?.frontShiny" />
+  <img *ngIf="model?.pokemon?.detalhes?.backShiny" class="col-md-2" [src]="model?.pokemon?.detalhes?.backShiny" />
+  <img *ngIf="model?.pokemon?.detalhes?.frontShinyFemale" class="col-md-2"
+    [src]="model?.pokemon?.detalhes?.frontShinyFemale" />
+  <img *ngIf="model?.pokemon?.detalhes?.backShinyFemale" class="col-md-2"
+    [src]="model?.pokemon?.detalhes?.backShinyFemale" />
+</div>

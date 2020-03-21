@@ -1,0 +1,13 @@
+<div class="row" *ngIf="model">
+  <div class="col-md-12">
+    <div class="panel panel-primary margintop10">
+      <div class="panel-heading">Condições climáticas</div>
+      <div class="panel-body">
+        <p><span class="negrito">Temperatura Atual :</span> {{model?.clima?.temperatura}} °С</p>
+        <p><span class="negrito">Está chovendo :</span> {{model?.clima?.chovendo}}</p>
+
+        <pokemon *ngIf="model.clima" [model]="model"></pokemon>
+      </div>
+    </div>
+  </div>
+</div>
