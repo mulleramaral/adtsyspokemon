@@ -1,4 +1,4 @@
-import { Model } from './model/model';
+import { Model, Clima } from './model/model';
 import { Error } from './model/model';
 import { OweathermapService } from './oweathermap.service';
 import { Component } from '@angular/core';
@@ -32,10 +32,13 @@ export class AppComponent {
     this.service.pesquisar(this.form.controls.cidade.value)
       .subscribe(value => {
         this.model = new Model();
-        this.model.clima = {
-          temperatura: value.main.temp,
-          chovendo: value.weather[0].main === 'Rain' ? 'Sim' : 'Não'
-        };
+        this.model.clima = new Clima();
+        this.model.clima.temperatura = value.main.temp;
+        this.model.clima.chovendo = value.weather[0].main === 'Rain' ? 'Sim' : 'Não';
+        this.model.clima.idcondicao = +value.weather[0].id.toString()[0];
+        this.model.clima.clima = value.weather[0].main;
+        this.model.clima.descricao = value.weather[0].description;
+        this.model.clima.icone = 'http://openweathermap.org/img/wn/' + value.weather[0].icon + '@2x.png';
         this.loading = false;
       },
         err => {

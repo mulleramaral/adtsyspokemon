@@ -31,8 +31,12 @@ export class Model {
 }
 
 export class Clima {
+    idcondicao: number;
     temperatura: number;
     chovendo: string;
+    clima: string;
+    descricao: string;
+    icone: string;
 }
 
 export class Pokemon {
